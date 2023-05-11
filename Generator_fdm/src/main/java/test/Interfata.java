@@ -67,9 +67,5 @@ public class Interfata {
 		JButton btnNewButton_2 = new JButton("New button");
 		btnNewButton_2.setBounds(45, 193, 85, 21);
 		panel.add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("New button");
-		btnNewButton_3.setBounds(45, 270, 85, 21);
-		panel.add(btnNewButton_3);
 	}
 }
