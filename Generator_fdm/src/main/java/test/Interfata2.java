@@ -83,7 +83,7 @@ public class Interfata2 extends JFrame {
 		contentPane.add(button);
 		
 		Button button_1 = new Button("Back");
-		button_1.setBounds(456, 434, 66, 21);
+		button_1.setBounds(447, 434, 66, 21);
 		contentPane.add(button_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data");
