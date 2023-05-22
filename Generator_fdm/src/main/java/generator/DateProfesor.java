@@ -17,9 +17,9 @@ public class DateProfesor {
 	 * Constructor fara argumente
 	 */
 	public DateProfesor() {
-		this.nume = "";
+		this.setNume("");
 		this.materie = null;
-		this.functie = "";
+		this.setFunctie("");
 
 	}
 
@@ -52,23 +52,85 @@ public class DateProfesor {
 	 * @param functie
 	 */
 	public void setDateProfesor(String nume, Vector<String> materie, String functie) {
-		this.nume = nume;
+		this.setNume(nume);
 		this.materie = materie;
-		this.functie = functie;
+		this.setFunctie(functie);
 
 	}
 
 	/**
-	 * Functie pentru returnare date profesor
+	 * 
+	 * @return nume profesor
+	 */
+	public String getNume() {
+		return nume;
+	}
+
+	/**
+	 * Set nume profesor
+	 * 
+	 * @param nume
+	 */
+
+	public void setNume(String nume) {
+		this.nume = nume;
+	}
+
+	/**
+	 * Materie profesor
 	 * 
 	 * @return
 	 */
-	public DateProfesor getDateProfesor() {
-		DateProfesor p = new DateProfesor();
-		p.nume = this.nume;
-		p.materie = this.materie;
-		p.functie = this.functie;
-		return p;
+
+	public Vector<String> getMaterie() {
+		return materie;
+	}
+
+	/**
+	 * Set materie profesor
+	 * 
+	 * @param materie
+	 */
+	public void setMaterie(Vector<String> materie) {
+		this.materie = new Vector<String>();
+		this.materie = materie;
+	}
+
+	/**
+	 * Functie profesor
+	 * 
+	 * @return
+	 */
+
+	public String getFunctie() {
+		return functie;
+	}
+
+	/**
+	 * Set functie profesor
+	 * 
+	 * @param functie
+	 */
+	public void setFunctie(String functie) {
+		this.functie = functie;
+	}
+
+	/**
+	 * Afisare profesori
+	 * 
+	 * @param profesori
+	 */
+
+	public void afisare(Vector<DateProfesor> profesori) {
+		for (int i = 0; i < profesori.size(); ++i) {
+			System.out.println("Nume: " + profesori.get(i).getNume());
+			System.out.print("Materie:");
+			for (int j = 0; j < profesori.get(i).materie.size(); ++j) {
+				System.out.print(" " + profesori.get(i).materie.get(j));
+			}
+			System.out.println("\nFunctie: " + profesori.get(i).getFunctie());
+
+		}
 	}
 
 }
