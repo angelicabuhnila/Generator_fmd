@@ -198,7 +198,7 @@ public class Interfata2 extends JFrame {
 		
 		
 		
-		JComboBox comboBox_2 = new JComboBox();
+		JComboBox comboBox_2 = new JComboBox<String>(this.array_materii);
 		comboBox_2.setBounds(130, 172, 252, 21);
 		contentPane.add(comboBox_2);
 	

@@ -109,7 +109,7 @@ public class OperatiiNotepad {
 
 			rezerva.add(s);
 			s = bfr.readLine();
-
+//comm
 		}
 
 		return rezerva;
