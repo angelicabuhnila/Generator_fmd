@@ -57,6 +57,7 @@ public class Interfata2 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 ??
 	 */
 	public Interfata2()
 	{
