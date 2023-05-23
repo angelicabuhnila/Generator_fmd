@@ -30,7 +30,6 @@ public class Main {
 				profi = txt.readLine(loc_prof);
 				nume_profesori = prof.numeProfesori(profi);
 				pag2 = new Interfata2(nume_profesori);
-				System.out.println("stopp");
 				pag2.setVisible(false);
 				pag2.array[0] = null;
 				pag1.array[4] = null;
