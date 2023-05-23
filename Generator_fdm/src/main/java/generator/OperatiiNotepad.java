@@ -7,9 +7,9 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Vector;
 
-public class OperatiiNotped {
+public class OperatiiNotepad {
 
-	OperatiiNotped() {
+	OperatiiNotepad() {
 	};
 
 	/**
@@ -83,5 +83,36 @@ public class OperatiiNotped {
 		return prof;
 
 	};
+
+	public Vector<String> readLine1(String locatie) throws Exception {
+		// citire date pe linie
+
+		Vector<String> rezerva = new Vector<String>();
+		int c;
+
+		StringBuilder strb = new StringBuilder();
+		try {
+			InputStream in = new FileInputStream(locatie);
+			while ((c = in.read()) != -1) {
+				strb.append((char) c);
+			}
+			in.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
+
+		String s = bfr.readLine();
+
+		while (s != null) {
+
+			rezerva.add(s);
+			s = bfr.readLine();
+
+		}
+
+		return rezerva;
+	}
 
 };
