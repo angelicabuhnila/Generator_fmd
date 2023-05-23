@@ -1,6 +1,5 @@
 package generator;
 
-import java.awt.event.ComponentListener;
 import java.util.Vector;
 
 public class Main {
@@ -25,18 +24,25 @@ public class Main {
 		while (true) {
 
 			s = pag.setInterface(s, pag1, pag2);
+			//System.out.println(s);
 			if (s == "Interfata2") {
 				String loc_prof = pag1.array[0];
 				profi = txt.readLine(loc_prof);
 				nume_profesori = prof.numeProfesori(profi);
 				pag2 = new Interfata2(nume_profesori);
-				pag2.setVisible(false);
-				pag2.array[0] = null;
+				pag2.setVisible(true);
+				pag1.frame.setVisible(false);
+				//System.out.println(s+"mainnn");
+				System.out.println(pag1.array[4]+"pag1");
+				System.out.println(pag2.array[0]);
+				//pag2.array[0] = null;
 				pag1.array[4] = null;
-				s = pag.setInterface(s, pag1, pag2);
-				
+				System.out.println(pag1.array[4]+"pag1");
+				s="stop";
+				 
 				
 			}
+			
 			
 		}	
 

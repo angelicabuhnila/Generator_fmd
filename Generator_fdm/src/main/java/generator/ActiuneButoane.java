@@ -10,6 +10,7 @@ public class ActiuneButoane implements ActionListener {
 	}
 
 	public String setInterface(String s, Interfata1 pag1, Interfata2 pag2) {
+		
 		if (s == "Interfata1") {
 
 			pag1.frame.setVisible(true);
@@ -18,8 +19,10 @@ public class ActiuneButoane implements ActionListener {
 
 				pag2.array[0] = null;
 				s = pag1.array[4];
+				System.out.println("Inter2");
 			}
-			System.out.println("cevaa");
+			
+			//System.out.println("Inter1");
 
 		} else if (s == "Interfata2") {
 			pag2.setVisible(true);
@@ -29,6 +32,19 @@ public class ActiuneButoane implements ActionListener {
 				s = pag2.array[0];
 			}
 		}
+			 if(s=="stop")
+			{
+				pag2.setVisible(true);
+				pag1.frame.setVisible(false);
+				System.out.println(s);
+				if (pag2.array[0] != null) {
+					pag1.array[4] = null;
+					s = pag2.array[0];
+					System.out.println(s+"jfsh");
+				}
+				else s="stop";
+			}
+		
 		return s;
 	}
 
