@@ -1,63 +1,83 @@
 package generator;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class ActiuneButoane implements ActionListener {
+/**
+ * 
+ * @author Angelica clasa pentru comutarea interfetelor
+ */
+public class ActiuneButoane {
 
 	public ActiuneButoane() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public String setInterface(String s, Interfata1 pag1, Interfata2 pag2) {
-		
-		if (s == "Interfata1") {
+	/**
+	 * 
+	 * @param s    parametru control interfete
+	 * @param pag1 Interfata1
+	 * @param pag2 Interfata2
+	 * @return numele interfetei actuale
+	 */
 
-			pag1.frame.setVisible(true);
-			pag2.setVisible(false);
-			if (pag1.array[4] != null) {
+	public String setInterface1(String s, Interfata1 pag1, Interfata2 pag2) {
+		pag1.frame.setVisible(true); // afisare pag1
+		pag2.setVisible(false);
 
-				pag2.array[0] = null;
-				s = pag1.array[4];
-				System.out.println("Inter2");
-			}
-			
-			//System.out.println("Inter1");
+		if (pag1.array[4] != null) { // daca butonul start este apasat schimb interfata
 
-		} else if (s == "Interfata2") {
-			pag2.setVisible(true);
-			pag1.frame.setVisible(false);
-			if (pag2.array[0] != null) {
-				pag1.array[4] = null;
-				s = pag2.array[0];
-			}
+			pag2.array[0] = null; // ascund interfata2
+			s = pag1.array[4]; // actualizez parametrul de control
+
 		}
-			 if(s=="stop")
-			{
-				pag2.setVisible(true);
-				pag1.frame.setVisible(false);
-				System.out.println(s);
-				if (pag2.array[0] != null) {
-					pag1.array[4] = null;
-					s = pag2.array[0];
-					System.out.println(s+"jfsh");
-				}
-				else s="stop";
-			}
-		
 		return s;
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		String comanda = e.getActionCommand();
-		switch (comanda) {
-		case "Start":
-			// butonStart(comanda,e);
+	/**
+	 * 
+	 * @param s    parametru control interfete
+	 * @param pag1 Interfata1
+	 * @param pag2 Interfata2
+	 * @return numele interfetei actuale
+	 */
+
+	public String setInterface2(String s, Interfata1 pag1, Interfata2 pag2) {
+		pag2.setVisible(true); // afisare pag2
+		pag1.frame.setVisible(false);
+
+		if (pag2.array[0] != null) { // daca butonul back este apasat schimb interfata
+			pag1.array[4] = null; // ascund interfata1
+			s = pag2.array[0]; // actualizez parametrul de control
+
+		}
+		return s;
+	}
+
+	/**
+	 * 
+	 * @param s    parametru control interfete
+	 * @param pag1 Interfata1
+	 * @param pag2 Interfata2
+	 * @return numele interfetei actuale
+	 */
+
+	public String setInterface(String s, Interfata1 pag1, Interfata2 pag2) {
+
+		// folosesc un switch pentru aspectul codului
+		switch (s) {
+		case "Interfata1":
+			s = setInterface1(s, pag1, pag2);
+			break;
+
+		case "Interfata2":
+			s = setInterface2(s, pag1, pag2);
+			break;
+
+		case "stop":
+			s = setInterface2(s, pag1, pag2);
 			break;
 		}
 
+		return s;
+
 	}
 
-	// classa pt ascultaor + functii
 }

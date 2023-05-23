@@ -2,14 +2,19 @@ package generator;
 
 import java.util.Vector;
 
+import javax.print.DocFlavor.STRING;
+
 /**
  * 
- * @author Angelica Creeare clasa pentru stocarea datelor despre profesor
+ * @author Angelica
+ *  Clasa pentru stocarea datelor despre profesor
  *
  */
 public class DateProfesor {
-
-	private String nume;
+/**
+ * Clasa contine numele profesorului, materiile si functia.
+ */
+	private String nume; 
 	private Vector<String> materie;
 	private String functie;
 
@@ -57,7 +62,7 @@ public class DateProfesor {
 		this.setFunctie(functie);
 
 	}
-
+ 
 	/**
 	 * 
 	 * @return nume profesor
@@ -131,9 +136,13 @@ public class DateProfesor {
 			System.out.println("\nFunctie: " + profesori.get(i).getFunctie());
 
 		}
-		
-	} 
+	}
 	
+	/**
+	 * Selectez numele profesorilor pentru Interfata2
+	 * @param profesori
+	 * @return
+	 */
 	public Vector<String> numeProfesori(Vector<DateProfesor> profesori)
 	{
 		Vector<String> numeProfesori= new Vector<String>();
@@ -144,5 +153,29 @@ public class DateProfesor {
 		return numeProfesori;
 		
 	}
+	/**
+	 * Selectez materiile pentru numeProfesor si adaug la final si functia lui
+	 * @param profesori
+	 * @param numeProfesor
+	 * @return
+	 */
 	
+	public Vector<String> numeMateriiFunctie(Vector<DateProfesor> profesori, String numeProfesor)
+	{
+		Vector<String> numeMaterii= new Vector<String>();
+		for(int i=0;i< profesori.size();++i)
+		{
+			if(numeProfesor==profesori.get(i).getNume())
+			{
+				numeMaterii=profesori.get(i).getMaterie();
+				numeMaterii.add(profesori.get(i).getFunctie());
+			}
+			
+			
+		}
+		return numeMaterii;
+		
+	}
+
+
 }
