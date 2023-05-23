@@ -131,6 +131,7 @@ public class DateProfesor {
 			System.out.println("\nFunctie: " + profesori.get(i).getFunctie());
 
 		}
-	}
-
+		
+	} 
+	
 }
