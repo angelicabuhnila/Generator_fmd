@@ -18,10 +18,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Vector;
 import java.awt.Button;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
 public class Interfata2 extends JFrame {
@@ -86,27 +91,10 @@ public class Interfata2 extends JFrame {
 		lblNewLabel.setBounds(10, 29, 75, 31);
 		contentPane.add(lblNewLabel);
 
-		JMenu mnNewMenu = new JMenu("Alegeti...");
-		mnNewMenu.setBounds(114, 29, 111, 24);
-		contentPane.add(mnNewMenu);
-
-		JMenuItem mntmNewMenuItem = new JMenuItem("fvdfvd");
-		mnNewMenu.add(mntmNewMenuItem);
-
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("New menu item");
-		mnNewMenu.add(mntmNewMenuItem_1);
-
 		JLabel lblNewLabel_2 = new JLabel("Profesor 2");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_2.setBounds(10, 99, 86, 24);
 		contentPane.add(lblNewLabel_2);
-
-		JMenu mnNewMenu_1 = new JMenu("Alegeti...");
-		mnNewMenu_1.setBounds(114, 99, 111, 24);
-		contentPane.add(mnNewMenu_1);
-
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("New menu item");
-		mnNewMenu_1.add(mntmNewMenuItem_2);
 
 		Button button = new Button("Finish");
 		button.setBounds(528, 434, 66, 21);
@@ -123,7 +111,7 @@ public class Interfata2 extends JFrame {
 		contentPane.add(lblNewLabel_3);
 
 		textField = new JTextField();
-		textField.setBounds(150, 227, 96, 19);
+		textField.setBounds(131, 227, 96, 19);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
@@ -131,19 +119,6 @@ public class Interfata2 extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(10, 168, 75, 24);
 		contentPane.add(lblNewLabel_1);
-
-		JMenu mnNewMenu_2 = new JMenu("Alegeti...");
-		mnNewMenu_2.setBounds(114, 168, 111, 24);
-		contentPane.add(mnNewMenu_2);
-
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("New menu item");
-		mnNewMenu_2.add(mntmNewMenuItem_4);
-
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("New menu item");
-		mnNewMenu_2.add(mntmNewMenuItem_5);
-
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("New menu item");
-		mnNewMenu_2.add(mntmNewMenuItem_3);
 
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("1301A");
 		rdbtnNewRadioButton.setBounds(10, 329, 103, 21);
@@ -193,39 +168,51 @@ public class Interfata2 extends JFrame {
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_4.setBounds(10, 286, 45, 13);
 		contentPane.add(lblNewLabel_4);
+		
+	
+		
+		Vector<String> vec = new Vector<String>();
+		
+		try {
+			Scanner fis = new Scanner (new FileInputStream("D:\\an3\\ProiectPIP\\Generator_fmd\\Generator_fdm\\src\\main\\java\\generator\\Profesori"));
+            
+			
+			while(fis.hasNextLine())
+			{
+				String el=fis.nextLine();
+				vec.add(el);
+				
+			}
+			
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+   
+		JComboBox <String>comboBox = new JComboBox<String>(vec);
+		comboBox.setBounds(130, 36, 252, 21);
+		contentPane.add(comboBox);
+		
+	
 
-		JMenu mnNewMenu_4 = new JMenu("Alegeti...");
-		mnNewMenu_4.setBounds(114, 275, 111, 24);
-		contentPane.add(mnNewMenu_4);
 
-		JMenuItem mntmNewMenuItem_7 = new JMenuItem("New menu item");
-		mnNewMenu_4.add(mntmNewMenuItem_7);
-
-		JMenuItem mntmNewMenuItem_6 = new JMenuItem("New menu item");
-		mnNewMenu_4.add(mntmNewMenuItem_6);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(130, 103, 252, 21);
+		contentPane.add(comboBox_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setBounds(130, 172, 252, 21);
+		contentPane.add(comboBox_2);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setBounds(130, 284, 252, 21);
+		contentPane.add(comboBox_3);
 		return array;
 	}
 
-	@SuppressWarnings("unused")
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
-
-	}
-
+	
+	
 }
