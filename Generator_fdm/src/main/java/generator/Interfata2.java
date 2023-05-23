@@ -34,6 +34,7 @@ public class Interfata2 extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	String[] array = new String[15];
+	Vector<String> array2= new Vector<String>(); 
 
 	/**
 	 * Launch the application.
@@ -55,8 +56,14 @@ public class Interfata2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Interfata2() {
+	public Interfata2()
+	{
+		this.array=initializare();
+	}
+	public Interfata2(Vector<String> array) {
+		this.array2=array;
 		this.array = initializare();
+		
 	};
 
 	private String[] initializare() {
@@ -199,18 +206,39 @@ public class Interfata2 extends JFrame {
 
 
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox comboBox_1 = new JComboBox<String>(vec);
 		comboBox_1.setBounds(130, 103, 252, 21);
 		contentPane.add(comboBox_1);
+		
+		
 		
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setBounds(130, 172, 252, 21);
 		contentPane.add(comboBox_2);
 		
-		JComboBox comboBox_3 = new JComboBox();
+	Vector<String> vec1 = new Vector<String>();
+		
+		try {
+			Scanner fis1 = new Scanner (new FileInputStream("D:\\an3\\ProiectPIP\\Generator_fmd\\Generator_fdm\\src\\main\\java\\generator\\sali.txt"));
+            
+			
+			while(fis1.hasNextLine())
+			{
+				String elm=fis1.nextLine();
+				vec1.add(elm);
+				
+			}
+			
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		JComboBox comboBox_3 = new JComboBox<String>(this.array2);
 		comboBox_3.setBounds(130, 284, 252, 21);
 		contentPane.add(comboBox_3);
 		return array;
+		
 	}
 
 	

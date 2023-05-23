@@ -19,6 +19,7 @@ public class ActiuneButoane implements ActionListener {
 				pag2.array[0] = null;
 				s = pag1.array[4];
 			}
+			System.out.println("cevaa");
 
 		} else if (s == "Interfata2") {
 			pag2.setVisible(true);

@@ -134,4 +134,15 @@ public class DateProfesor {
 		
 	} 
 	
+	public Vector<String> numeProfesori(Vector<DateProfesor> profesori)
+	{
+		Vector<String> numeProfesori= new Vector<String>();
+		for(int i=0;i< profesori.size();++i)
+		{
+			numeProfesori.add(profesori.get(i).getNume());
+		}
+		return numeProfesori;
+		
+	}
+	
 }

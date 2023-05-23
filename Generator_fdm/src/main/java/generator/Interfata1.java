@@ -93,6 +93,7 @@ public class Interfata1 {
 				if (e.getActionCommand() == "Start") {
 					// stochez locatia pt fiecare fisier
 					locatie[0] = textField.getText();
+					System.out.print(locatie[0]);
 					locatie[1] = textField_1.getText();
 					locatie[2] = textField_2.getText();
 					locatie[3] = textField_3.getText();
