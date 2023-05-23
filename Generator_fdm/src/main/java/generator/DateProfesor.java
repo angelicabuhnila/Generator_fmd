@@ -2,6 +2,8 @@ package generator;
 
 import java.util.Vector;
 
+import javax.print.DocFlavor.STRING;
+
 /**
  * 
  * @author Angelica Creeare clasa pentru stocarea datelor despre profesor
@@ -131,7 +133,28 @@ public class DateProfesor {
 			System.out.println("\nFunctie: " + profesori.get(i).getFunctie());
 
 		}
-		
-	} 
+	}
 	
+	public Vector<String> numeProfesori(Vector<DateProfesor> profesori)
+	{
+		Vector<String> numeProfesori= new Vector<String>();
+		for(int i=0;i< profesori.size();++i)
+		{
+			numeProfesori.add(profesori.get(i).getNume());
+		}
+		return numeProfesori;
+		
+	}
+	
+	public Vector<String> numeMaterii(Vector<DateProfesor> profesori, String numeProfesor)
+	{
+		Vector<String> numeMaterii= new Vector<String>();
+		for(int i=0;i< profesori.size();++i)
+		{
+			numeMaterii.add(profesori.get(i).getNume());
+		}
+		return numeMaterii;
+		
+	}
+
 }
