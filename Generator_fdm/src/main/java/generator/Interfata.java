@@ -164,8 +164,6 @@ public class Interfata {
 		btn.setBounds(135, 404, 115, 21);
 		panel.add(btn);
 		
-		//Partea de care avem nevoie pt completaare word
-		
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 String nume=textField.getText();
@@ -187,7 +185,7 @@ public class Interfata {
 				 
 				  
 		  //Replace all the matches of text “deer” in the document with new text “buffalo”
-				 
+				
 				 document.replace("#nume",nume, false, true);
 				 document.replace("#functia",functia, false, true);
 				 document.replace("#asistat",profesor_asistat, false, true);
@@ -200,7 +198,7 @@ public class Interfata {
 				 
 			 document.saveToFile("FisaGenerata.docx");
 
-				
+				 
 				
 			}
 		});
