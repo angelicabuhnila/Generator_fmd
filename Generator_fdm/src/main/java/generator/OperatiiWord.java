@@ -12,7 +12,7 @@ public class OperatiiWord {
 
 	
 			  
-	public OperatiiWord(String locatie_doc,String[] cuvinte_cheie ) {
+ void operatii(String locatie_doc,String[] cuvinte_cheie ) {
 		/**
 		 * Creare Document
 		 */
@@ -41,7 +41,7 @@ public class OperatiiWord {
 	/**
 	 * Salvare document	 
 	 */
-	 document.saveToFile("FisaGenerata.docx");
+	 document.saveToFile("FisaGenerata" +cuvinte_cheie[7]+"_"+cuvinte_cheie[5]+".docx");
 	};
 	
 	
