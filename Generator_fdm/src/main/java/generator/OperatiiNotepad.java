@@ -3,11 +3,46 @@ package generator;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Vector;
 
 public class OperatiiNotepad {
+	/**
+	 * 
+	 * @param locatie - loagtia fisiserului cu grupe
+	 * @param start - de unde incepe citirea pentru inserarea in tabel
+	 * @param stop - unde se termina citirea pentru inserarea in tabel
+	 * Group selection function
+	 */
+	public void selectare_grupe(String locatie,String start,String stop) {
+          
+	 Vector<String> nume_grupe = null;
+
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
+		    String line;
+		    boolean shouldRead = false; //
+		    
+		    while ((line = reader.readLine()) != null) {
+		        if (line.contains(start)) {
+		            shouldRead = true; //
+		        }
+		        
+		        if (shouldRead) {
+		            System.out.println(line); //
+		        }
+		        
+		        if (line.contains(stop)) {
+		            break; // 
+		        }
+		    }
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		}
 
 	OperatiiNotepad() {
 	};
@@ -117,3 +152,4 @@ public class OperatiiNotepad {
 
 };
 //verificare?
+
