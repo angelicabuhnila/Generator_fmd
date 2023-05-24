@@ -8,11 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OperatiiNotepad {
 	/**
 	 * 
-	 * @param locatie - loagtia fisiserului cu grupe
+	 * @param locatie - locatia fisierului cu grupe
 	 * @param start - de unde incepe citirea pentru inserarea in tabel
 	 * @param stop - unde se termina citirea pentru inserarea in tabel
 	 * Group selection function
@@ -47,6 +49,49 @@ public class OperatiiNotepad {
 	OperatiiNotepad() {
 	};
 
+	public Vector<String> selectNumeGrupe(String locatie, String selectie) throws Exception {
+		// citire date pe linie
+
+		Vector<String> rezerva = new Vector<String>();
+		int c;
+
+		StringBuilder strb = new StringBuilder();
+		try {
+			InputStream in = new FileInputStream(locatie);
+			while ((c = in.read()) != -1) {
+				strb.append((char) c);
+			}
+			in.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
+
+		String s = bfr.readLine();
+		
+		
+		while (s != null) {
+			   String combination = "130"; // Combinatia de litere cautata
+
+	        String[] words = s.split("\\s+"); // Split textul în cuvinte
+
+	        Pattern pattern = Pattern.compile(combination);
+	        Matcher matcher;
+
+	        for (String word : words) {
+	            matcher = pattern.matcher(word);
+	            if (matcher.find()) {
+	                System.out.println("Cuvantul gasit: " + word);
+	                rezerva.add(word);
+	                
+	            }
+	        }
+	    }
+
+		
+		return rezerva;
+	}
 	/**
 	 * 
 	 * @param locatie locatia fisierului txt
