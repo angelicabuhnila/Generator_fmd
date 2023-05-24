@@ -114,6 +114,44 @@ public class OperatiiNotepad {
 
 		return rezerva;
 	}
+	
+	public String[] readLine2(String locatie, String selectie) throws Exception {
+		// citire date pe linie
+
+		String[] rezerva = new String[20];
+		int c;
+
+		StringBuilder strb = new StringBuilder();
+		int index_start_selctie=1;
+		int index_insertie=0;
+		try {
+			InputStream in = new FileInputStream(locatie);
+			while ((c = in.read()) != -1) {
+				strb.append((char) c);
+			}
+			in.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
+
+		String s = bfr.readLine();
+
+		while (s != null) {
+			if(s!=selectie)
+			{
+				s = bfr.readLine();
+				++index_start_selctie;
+				
+			}
+
+		}
+		
+		
+
+		return rezerva;
+	}
 
 };
-//verificare?
+
