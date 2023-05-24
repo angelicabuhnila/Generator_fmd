@@ -3,15 +3,95 @@ package generator;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OperatiiNotepad {
+	/**
+	 * 
+	 * @param locatie - locatia fisierului cu grupe
+	 * @param start - de unde incepe citirea pentru inserarea in tabel
+	 * @param stop - unde se termina citirea pentru inserarea in tabel
+	 * Group selection function
+	 */
+	public void selectare_grupe(String locatie,String start,String stop) {
+          
+	 Vector<String> nume_grupe = null;
+
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
+		    String line;
+		    boolean shouldRead = false; //
+		    
+		    while ((line = reader.readLine()) != null) {
+		        if (line.contains(start)) {
+		            shouldRead = true; //
+		        }
+		        
+		        if (shouldRead) {
+		            System.out.println(line); //
+		        }
+		        
+		        if (line.contains(stop)) {
+		            break; // 
+		        }
+		    }
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		}
 
 	OperatiiNotepad() {
 	};
 
+	public Vector<String> selectNumeGrupe(String locatie, String selectie) throws Exception {
+		// citire date pe linie
+
+		Vector<String> rezerva = new Vector<String>();
+		int c;
+
+		StringBuilder strb = new StringBuilder();
+		try {
+			InputStream in = new FileInputStream(locatie);
+			while ((c = in.read()) != -1) {
+				strb.append((char) c);
+			}
+			in.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
+
+		String s = bfr.readLine();
+		
+		
+		while (s != null) {
+			   String combination = "130"; // Combinatia de litere cautata
+
+	        String[] words = s.split("\\s+"); // Split textul �n cuvinte
+
+	        Pattern pattern = Pattern.compile(combination);
+	        Matcher matcher;
+
+	        for (String word : words) {
+	            matcher = pattern.matcher(word);
+	            if (matcher.find()) {
+	                System.out.println("Cuvantul gasit: " + word);
+	                rezerva.add(word);
+	                
+	            }
+	        }
+	    }
+
+		
+		return rezerva;
+	}
 	/**
 	 * 
 	 * @param locatie locatia fisierului txt
