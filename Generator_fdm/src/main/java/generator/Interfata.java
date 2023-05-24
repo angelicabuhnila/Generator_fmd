@@ -185,7 +185,7 @@ public class Interfata {
 				 
 				  
 		  //Replace all the matches of text “deer” in the document with new text “buffalo”
-				 
+				
 				 document.replace("#nume",nume, false, true);
 				 document.replace("#functia",functia, false, true);
 				 document.replace("#asistat",profesor_asistat, false, true);
