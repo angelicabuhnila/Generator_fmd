@@ -156,20 +156,18 @@ public class DateProfesor {
 	/**
 	 * Selectez materiile pentru numeProfesor si adaug la final si functia lui
 	 * @param profesori
-	 * @param numeProfesor
 	 * @return
 	 */
 	
-	public Vector<String> numeMateriiFunctie(Vector<DateProfesor> profesori, String numeProfesor)
+	public Vector<String> numeMateriiFunctie(Vector<DateProfesor> profesori)
 	{
 		Vector<String> numeMaterii= new Vector<String>();
 		for(int i=0;i< profesori.size();++i)
 		{
-			if(numeProfesor==profesori.get(i).getNume())
-			{
-				numeMaterii=profesori.get(i).getMaterie();
-				numeMaterii.add(profesori.get(i).getFunctie());
-			}
+			numeMaterii.addAll(profesori.get(i).getMaterie());
+				//numeMaterii.add(functie)).get(i).getMaterie();
+			
+				//numeMaterii.add(profesori.get(i).getFunctie());
 			
 			
 		}
