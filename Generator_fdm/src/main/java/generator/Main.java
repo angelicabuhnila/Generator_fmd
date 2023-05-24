@@ -18,9 +18,9 @@ public class Main {
 		String s = "Interfata1";
 		DateProfesor prof = new DateProfesor();
 		Vector<DateProfesor> profi = new Vector<DateProfesor>();
-		OperatiiNotped txt = new OperatiiNotped();
+		OperatiiNotepad txt = new OperatiiNotepad();
 		Vector<String> nume_profesori = new Vector<String>();
-		
+		Vector<String> sali = new Vector<String>();
 		while (true) {
 
 			s = pag.setInterface(s, pag1, pag2);
@@ -29,7 +29,9 @@ public class Main {
 				String loc_prof = pag1.array[0];
 				profi = txt.readLine(loc_prof);
 				nume_profesori = prof.numeProfesori(profi);
-				pag2 = new Interfata2(nume_profesori);
+				
+				//sali=txt.readLine1(loc_sali);
+			//	pag2 = new Interfata2(nume_profesori);
 				pag2.setVisible(true);
 				pag1.frame.setVisible(false);
 				//System.out.println(s+"mainnn");
@@ -39,7 +41,7 @@ public class Main {
 				pag1.array[4] = null;
 				System.out.println(pag1.array[4]+"pag1");
 				s="stop";
-				 
+				
 				
 			}
 			
