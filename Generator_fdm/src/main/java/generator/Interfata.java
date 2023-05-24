@@ -164,6 +164,8 @@ public class Interfata {
 		btn.setBounds(135, 404, 115, 21);
 		panel.add(btn);
 		
+		//Partea de care avem nevoie pt completaare word
+		
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 String nume=textField.getText();
@@ -198,7 +200,7 @@ public class Interfata {
 				 
 			 document.saveToFile("FisaGenerata.docx");
 
-				 
+				
 				
 			}
 		});
