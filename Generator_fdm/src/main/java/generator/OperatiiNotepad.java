@@ -88,7 +88,7 @@ public class OperatiiNotepad {
 	}
 
 	/**
-	 * Selectare dtae si generare obiect
+	 * Selectare date si generare obiect
 	 * 
 	 * @param s     datele de prelucrat
 	 * @param index linia de unde s a fcaut citirea
