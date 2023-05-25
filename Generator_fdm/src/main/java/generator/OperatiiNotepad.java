@@ -44,8 +44,11 @@ public class OperatiiNotepad {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		nume_grupe.remove(start);
+		nume_grupe.remove(stop);
+		nume_grupe.remove("\n");
 		return nume_grupe;
+		
 	}
 
 	OperatiiNotepad() {

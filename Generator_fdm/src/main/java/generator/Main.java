@@ -73,6 +73,7 @@ public class Main {
 		System.out.println(pag2.grupe_selectate.size());
 		OperatiiWord word= new OperatiiWord();
 		word.generareDocument(loc_document, loc_grupe, cuvinte_cheie, pag2.grupe_selectate);
+		System.out.println("Finalizare!");
 		
 		
 

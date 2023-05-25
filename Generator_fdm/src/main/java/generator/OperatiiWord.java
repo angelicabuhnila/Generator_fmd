@@ -90,8 +90,9 @@ public class OperatiiWord {
 
 		String[][] data = new String[numeStudenti.size()][3];
 		for (int i = 0; i < data.length; ++i) {
-			String index=" "+1+i;
-			data[i] = new String[] {numeStudenti.get(i), "__" };
+			int index=1+i;
+			String index1=" "+index;
+			data[i] = new String[] {index1,numeStudenti.get(i), "\n" };
 		}
 
 		// Add a table
