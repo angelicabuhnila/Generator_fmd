@@ -41,7 +41,8 @@ public class OperatiiWord {
 			String stop = selectNumeGrupe.get(index + 1);
 
 			Vector<String> selectare_studenti_grupa = objNtp.selectare_studenti_grupa(locatie_grupe, start, stop);
-			cuvinte_cheie[4] = "" + selectare_studenti_grupa.size();
+			int b=selectare_studenti_grupa.size()-1;
+			cuvinte_cheie[4] = "" + b;
 			cuvinte_cheie[7]=start;
 			creeareDocument(document, cuvinte_cheie);
 

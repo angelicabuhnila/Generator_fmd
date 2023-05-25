@@ -1,27 +1,18 @@
 package generator;
 
-import java.awt.EventQueue;
-
-
-import javax.swing.JFrame;
 import java.awt.CardLayout;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
-import java.util.Scanner;
-import com.spire.doc.Document;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JMenuBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import com.spire.doc.Document;
 
 public class Interfata {
 	

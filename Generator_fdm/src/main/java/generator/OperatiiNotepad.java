@@ -47,7 +47,7 @@ public class OperatiiNotepad {
 		}
 		nume_grupe.remove(start);
 		nume_grupe.remove(stop);
-		nume_grupe.remove(null);
+		
 
 		return nume_grupe;
 
@@ -60,8 +60,7 @@ public class OperatiiNotepad {
 	 */
 	public void selectare_grupe(String locatie,String start,String stop) {
           
-	 Vector<String> nume_grupe = null;
-
+	
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
 		    String line;

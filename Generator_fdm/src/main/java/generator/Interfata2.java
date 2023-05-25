@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Interfata2 extends JFrame {
-private JPanel contentPane;
+	private JPanel contentPane;
 	private JTextField textField;
 	String[] array = new String[15];
 	Vector<String> grupe_selectate = new Vector<String>();
@@ -26,7 +26,6 @@ private JPanel contentPane;
 	Vector<String> array_prof = new Vector<String>();
 	Vector<String> array_sali = new Vector<String>();
 	Vector<String> array_materii = new Vector<String>();
-	
 
 	/**
 	 * Launch the application.
@@ -49,15 +48,17 @@ private JPanel contentPane;
 	 * Create the frame. ??
 	 */
 	public Interfata2() {
-		
+
 	}
 
 	/**
 	 * folosesc acesti parametrii pentru creearea interfetei
-	 * @param array_prof folosit pentru inserarea in interfata a datelor despre profesori
-	 * @param array_sali folosit pentru inseararea in interfata a salilor 
-	 * @param array_materii folosit pentru inserarea in interfata a materiilor 
-	 *  */
+	 * 
+	 * @param array_prof    folosit pentru inserarea in interfata a datelor despre
+	 *                      profesori
+	 * @param array_sali    folosit pentru inseararea in interfata a salilor
+	 * @param array_materii folosit pentru inserarea in interfata a materiilor
+	 */
 	public Interfata2(Vector<String> array_prof, Vector<String> array_sali, Vector<String> array_materii) {
 		this.array_prof = array_prof;
 		this.array_sali = array_sali;
@@ -65,13 +66,11 @@ private JPanel contentPane;
 		this.array = initializare();
 
 	};
-	
 
 	private String[] initializare() {
 		final String[] array = new String[15];
 		@SuppressWarnings("unused")
-		final
-		Interfata2 pag2 = new Interfata2();
+		final Interfata2 pag2 = new Interfata2();
 		class ActionBtn2 implements ActionListener {
 
 			/**
@@ -103,8 +102,10 @@ private JPanel contentPane;
 				case "Functia":
 					array[5] = setParametrii(e);
 					break;
+				case "Data":
+					array[6]=setData(e);
+					break;
 				case "Finish":
-
 					array[7] = "Finish";
 					Collections.sort(pag2.grupe_selectate);
 					System.out.println(pag2.grupe_selectate.size());
@@ -117,8 +118,8 @@ private JPanel contentPane;
 			}
 
 		}
-		
-		this.grupe_selectate=pag2.grupe_selectate;
+
+		this.grupe_selectate = pag2.grupe_selectate;
 
 		ActionBtn2 a = new ActionBtn2();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -158,6 +159,8 @@ private JPanel contentPane;
 		textField.setBounds(131, 227, 96, 19);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		textField.setActionCommand("Data");
+		textField.addActionListener(a);
 
 		JLabel lblNewLabel_1 = new JLabel("Materia");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -205,7 +208,7 @@ private JPanel contentPane;
 		contentPane.add(rdbtnNewRadioButton_9);
 
 		String jradio = "Grupa Selectata";
-		
+
 		rdbtnNewRadioButton.setActionCommand(jradio);
 		rdbtnNewRadioButton_1.setActionCommand(jradio);
 		rdbtnNewRadioButton_2.setActionCommand(jradio);
@@ -216,7 +219,6 @@ private JPanel contentPane;
 		rdbtnNewRadioButton_7.setActionCommand(jradio);
 		rdbtnNewRadioButton_8.setActionCommand(jradio);
 		rdbtnNewRadioButton_9.setActionCommand(jradio);
-		
 
 		rdbtnNewRadioButton.addActionListener(a);
 		rdbtnNewRadioButton_1.addActionListener(a);
@@ -228,7 +230,7 @@ private JPanel contentPane;
 		rdbtnNewRadioButton_7.addActionListener(a);
 		rdbtnNewRadioButton_8.addActionListener(a);
 		rdbtnNewRadioButton_9.addActionListener(a);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Sala");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_4.setBounds(10, 286, 45, 13);
@@ -278,7 +280,7 @@ private JPanel contentPane;
 
 	/**
 	 * 
-	 * @param e actiunea butonului 
+	 * @param e     actiunea butonului
 	 * @param grupe adauga grupele selectate
 	 */
 	public void setGrupa(ActionEvent e, Vector<String> grupe) {
@@ -291,6 +293,15 @@ private JPanel contentPane;
 			grupe.remove(jradio.getText());
 		}
 
+	}
+
+	public String setData(ActionEvent e) {
+		String data=null;
+		JTextField textField = new JTextField();
+		textField = (JTextField) e.getSource();
+		data = textField.getText();
+		System.out.println("Ati introdus data:" + data);
+return data;
 	}
 
 }

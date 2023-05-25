@@ -2,8 +2,6 @@ package generator;
 
 import java.util.Vector;
 
-import javax.print.DocFlavor.STRING;
-
 /**
  * 
  * @author Angelica Clasa pentru stocarea datelor despre profesor
