@@ -23,7 +23,7 @@ public class OperatiiNotepad {
 
 		Vector<String> nume_grupe = new Vector<String>();
 
-		locatie="./"+locatie;
+		
 		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
 			String line;
 			boolean shouldRead = false; //
