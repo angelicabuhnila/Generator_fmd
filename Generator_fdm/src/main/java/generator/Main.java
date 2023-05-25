@@ -39,7 +39,7 @@ public class Main {
 			if (s == "Interfata2") {
 				// loc_document = pag1.array[0];
 				// loc_profesori = pag1.array[1];
-				 //loc_sali=pag1.array[2];
+				// loc_sali=pag1.array[2];
 				 //loc_grupe=pag1.array[3];
 				profesori = notePed.readLine(loc_profesori);
 				nume_profesori=prof.numeProfesori(profesori);
