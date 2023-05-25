@@ -46,14 +46,23 @@ public class OperatiiNotepad {
 		}
 		nume_grupe.remove(start);
 		nume_grupe.remove(stop);
-		nume_grupe.remove("\n");
+		nume_grupe.remove(null);
+
 		return nume_grupe;
-		
+
 	}
 
 	OperatiiNotepad() {
 	};
 
+	/**
+	 * Selectare nume grupe
+	 * 
+	 * @param locatie  fisierului
+	 * @param selectie combinatia pe care vreau sa o selectez
+	 * @return toate elementele ce contin combinatia din selectie
+	 * @throws Exception
+	 */
 	public Vector<String> selectNumeGrupe(String locatie, String selectie) throws Exception {
 		// citire date pe linie
 
@@ -86,12 +95,11 @@ public class OperatiiNotepad {
 			for (String word : words) {
 				matcher = pattern.matcher(word);
 				if (matcher.find()) {
-					System.out.println("Cuvantul gasit: " + word);
 					rezerva.add(word);
 
 				}
 			}
-			s=bfr.readLine();
+			s = bfr.readLine();
 		}
 		rezerva.add(null);
 		return rezerva;
@@ -138,7 +146,7 @@ public class OperatiiNotepad {
 	}
 
 	/**
-	 * Selectare dtae si generare obiect
+	 * Selectare date si generare obiect de tip DateProfesor
 	 * 
 	 * @param s     datele de prelucrat
 	 * @param index linia de unde s a fcaut citirea
@@ -169,6 +177,13 @@ public class OperatiiNotepad {
 
 	};
 
+	/**
+	 * citirea din fisier pe linie
+	 * 
+	 * @param locatie locatia fisierului
+	 * @return fiecare linie din fisier este pusa intr un vector
+	 * @throws Exception
+	 */
 	public Vector<String> readLine1(String locatie) throws Exception {
 		// citire date pe linie
 
@@ -194,41 +209,6 @@ public class OperatiiNotepad {
 
 			rezerva.add(s);
 			s = bfr.readLine();
-
-		}
-
-		return rezerva;
-	}
-
-	public String[] readLine2(String locatie, String selectie) throws Exception {
-		// citire date pe linie
-
-		String[] rezerva = new String[20];
-		int c;
-
-		StringBuilder strb = new StringBuilder();
-		int index_start_selctie = 1;
-		int index_insertie = 0;
-		try {
-			InputStream in = new FileInputStream(locatie);
-			while ((c = in.read()) != -1) {
-				strb.append((char) c);
-			}
-			in.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
-
-		String s = bfr.readLine();
-
-		while (s != null) {
-			if (s != selectie) {
-				s = bfr.readLine();
-				++index_start_selctie;
-
-			}
 
 		}
 

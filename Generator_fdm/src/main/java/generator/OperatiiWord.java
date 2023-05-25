@@ -17,8 +17,17 @@ import com.spire.doc.documents.TableRowHeightType;
 import com.spire.doc.documents.VerticalAlignment;
 import com.spire.doc.fields.TextRange;
 
+
 public class OperatiiWord {
 
+	/**
+	 * Generarea fisei
+	 * @param locatie_document
+	 * @param locatie_grupe
+	 * @param cuvinte_cheie
+	 * @param grupe_selectate
+	 * @throws Exception eroare citire sau scriere in document
+	 */
 	void generareDocument(String locatie_document, String locatie_grupe, String[] cuvinte_cheie,
 			Vector<String> grupe_selectate) throws Exception {
 		OperatiiNotepad objNtp = new OperatiiNotepad();
@@ -26,6 +35,7 @@ public class OperatiiWord {
 		for (int i = 0; i < grupe_selectate.size(); ++i) {
 			Document document = new Document();
 			document.loadFromFile(locatie_document);
+			
 			String start = grupe_selectate.get(i);
 			int index = selectNumeGrupe.indexOf(start);
 			String stop = selectNumeGrupe.get(index + 1);
@@ -51,17 +61,7 @@ public class OperatiiWord {
 	}
 
 	void creeareDocument(Document document, String[] cuvinte_cheie) {
-		/**
-		 * Creare Document
-		 */
-		// Document document = new Document();
-
-		/**
-		 * Load a Word document
-		 */
-
-		// document.loadFromFile(locatie_doc);
-
+		
 		/**
 		 * Inlocuire cuvinte gasite pe text cu datele din interfata
 		 */
@@ -74,13 +74,17 @@ public class OperatiiWord {
 		document.replace("#materie", cuvinte_cheie[5], false, true);
 		document.replace("#sala", cuvinte_cheie[6], false, true);
 		document.replace("#grupa", cuvinte_cheie[7], false, true);
-		// Save the result document
+		
 
 	};
 
 	public OperatiiWord() {
 	};
-
+/**
+ * Inserare tabel
+ * @param document documentul in care inserez
+ * @param numeStudenti  numele studentilor pe care ii inserezi
+ */
 	public void insertTabel(Document document, Vector<String> numeStudenti) {
 
 		Section section = document.addSection();

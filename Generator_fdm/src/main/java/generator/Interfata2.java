@@ -18,8 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Interfata2 extends JFrame {
-
-	private JPanel contentPane;
+private JPanel contentPane;
 	private JTextField textField;
 	String[] array = new String[15];
 	Vector<String> grupe_selectate = new Vector<String>();
@@ -27,6 +26,7 @@ public class Interfata2 extends JFrame {
 	Vector<String> array_prof = new Vector<String>();
 	Vector<String> array_sali = new Vector<String>();
 	Vector<String> array_materii = new Vector<String>();
+	
 
 	/**
 	 * Launch the application.
@@ -49,17 +49,23 @@ public class Interfata2 extends JFrame {
 	 * Create the frame. ??
 	 */
 	public Interfata2() {
-		//initializare();
+		
 	}
 
+	/**
+	 * folosesc acesti parametrii pentru creearea interfetei
+	 * @param array_prof folosit pentru inserarea in interfata a datelor despre profesori
+	 * @param array_sali folosit pentru inseararea in interfata a salilor 
+	 * @param array_materii folosit pentru inserarea in interfata a materiilor 
+	 *  */
 	public Interfata2(Vector<String> array_prof, Vector<String> array_sali, Vector<String> array_materii) {
 		this.array_prof = array_prof;
 		this.array_sali = array_sali;
 		this.array_materii = array_materii;
-
 		this.array = initializare();
 
 	};
+	
 
 	private String[] initializare() {
 		final String[] array = new String[15];
@@ -68,6 +74,9 @@ public class Interfata2 extends JFrame {
 		Interfata2 pag2 = new Interfata2();
 		class ActionBtn2 implements ActionListener {
 
+			/**
+			 * clasa actiune butoane
+			 */
 			ActionBtn2() {
 			};
 
@@ -102,12 +111,13 @@ public class Interfata2 extends JFrame {
 					break;
 				case "Grupa Selectata":
 					setGrupa(e, pag2.grupe_selectate);
-
+					break;
 				}
 
 			}
 
 		}
+		
 		this.grupe_selectate=pag2.grupe_selectate;
 
 		ActionBtn2 a = new ActionBtn2();
@@ -194,11 +204,8 @@ public class Interfata2 extends JFrame {
 		rdbtnNewRadioButton_9.setBounds(528, 350, 76, 21);
 		contentPane.add(rdbtnNewRadioButton_9);
 
-		JRadioButton rdbtnNewRadioButton_10 = new JRadioButton("SELECT ALL");
-		rdbtnNewRadioButton_10.setBounds(260, 384, 103, 21);
-		contentPane.add(rdbtnNewRadioButton_10);
-
 		String jradio = "Grupa Selectata";
+		
 		rdbtnNewRadioButton.setActionCommand(jradio);
 		rdbtnNewRadioButton_1.setActionCommand(jradio);
 		rdbtnNewRadioButton_2.setActionCommand(jradio);
@@ -209,7 +216,7 @@ public class Interfata2 extends JFrame {
 		rdbtnNewRadioButton_7.setActionCommand(jradio);
 		rdbtnNewRadioButton_8.setActionCommand(jradio);
 		rdbtnNewRadioButton_9.setActionCommand(jradio);
-		rdbtnNewRadioButton_10.setActionCommand(jradio);
+		
 
 		rdbtnNewRadioButton.addActionListener(a);
 		rdbtnNewRadioButton_1.addActionListener(a);
@@ -221,8 +228,7 @@ public class Interfata2 extends JFrame {
 		rdbtnNewRadioButton_7.addActionListener(a);
 		rdbtnNewRadioButton_8.addActionListener(a);
 		rdbtnNewRadioButton_9.addActionListener(a);
-		rdbtnNewRadioButton_10.addActionListener(a);
-
+		
 		JLabel lblNewLabel_4 = new JLabel("Sala");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_4.setBounds(10, 286, 45, 13);
@@ -258,6 +264,11 @@ public class Interfata2 extends JFrame {
 	}
 
 	@SuppressWarnings("unchecked")
+	/**
+	 * 
+	 * @param e actiunea butonului
+	 * @return returneaza textul selectat
+	 */
 	public String setParametrii(ActionEvent e) {
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox = (JComboBox<String>) e.getSource();
@@ -265,6 +276,11 @@ public class Interfata2 extends JFrame {
 
 	}
 
+	/**
+	 * 
+	 * @param e actiunea butonului 
+	 * @param grupe adauga grupele selectate
+	 */
 	public void setGrupa(ActionEvent e, Vector<String> grupe) {
 		JRadioButton jradio = new JRadioButton();
 		jradio = (JRadioButton) e.getSource();

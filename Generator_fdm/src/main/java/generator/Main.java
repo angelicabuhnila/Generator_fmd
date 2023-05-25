@@ -1,7 +1,12 @@
 package generator;
 
 import java.util.Vector;
-
+/**
+ * 
+ * @author Angelica
+ *
+ *Unirea claselor pentru generarea produsului final
+ */
 public class Main {
 
 	public Main() {
@@ -70,7 +75,7 @@ public class Main {
 
 		}
 		
-		System.out.println(pag2.grupe_selectate.size());
+		//System.out.println(pag2.grupe_selectate.size());
 		OperatiiWord word= new OperatiiWord();
 		word.generareDocument(loc_document, loc_grupe, cuvinte_cheie, pag2.grupe_selectate);
 		System.out.println("Finalizare!");
