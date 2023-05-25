@@ -8,13 +8,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class OperatiiNotepad {
 	/**
 	 * 
-<<<<<<< HEAD
 	 * @param locatie - locatia fisierului cu grupe
 	 * @param start   - de unde incepe citirea pentru inserarea in tabel
 	 * @param stop    - unde se termina citirea pentru inserarea in tabel Group
@@ -52,7 +49,8 @@ public class OperatiiNotepad {
 		return nume_grupe;
 
 	}
-=======
+	/**
+	 * 
 	 * @param locatie - loagtia fisiserului cu grupe
 	 * @param start - de unde incepe citirea pentru inserarea in tabel
 	 * @param stop - unde se termina citirea pentru inserarea in tabel
@@ -84,60 +82,42 @@ public class OperatiiNotepad {
 		    e.printStackTrace();
 		}
 		}
->>>>>>> refs/heads/main
+	/**
+	 * 
+	 * @param locatie - loagtia fisiserului cu grupe
+	 * @param start - de unde incepe citirea pentru inserarea in tabel
+	 * @param stop - unde se termina citirea pentru inserarea in tabel
+	 * Group selection function
+	 */
+	public void selectare_grupe(String locatie,String start,String stop) {
+          
+	 Vector<String> nume_grupe = null;
+
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
+		    String line;
+		    boolean shouldRead = false; //
+		    
+		    while ((line = reader.readLine()) != null) {
+		        if (line.contains(start)) {
+		            shouldRead = true; //
+		        }
+		        
+		        if (shouldRead) {
+		            System.out.println(line); //
+		        }
+		        
+		        if (line.contains(stop)) {
+		            break; // 
+		        }
+		    }
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		}
 
 	OperatiiNotepad() {
 	};
-
-	/**
-	 * Selectare nume grupe
-	 * 
-	 * @param locatie  fisierului
-	 * @param selectie combinatia pe care vreau sa o selectez
-	 * @return toate elementele ce contin combinatia din selectie
-	 * @throws Exception
-	 */
-	public Vector<String> selectNumeGrupe(String locatie, String selectie) throws Exception {
-		// citire date pe linie
-
-		Vector<String> rezerva = new Vector<String>();
-		int c;
-
-		StringBuilder strb = new StringBuilder();
-		try {
-			InputStream in = new FileInputStream(locatie);
-			while ((c = in.read()) != -1) {
-				strb.append((char) c);
-			}
-			in.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
-
-		String s = bfr.readLine();
-
-		while (s != null) {
-			String combination = selectie; // Combinatia de litere cautata
-
-			String[] words = s.split("\\s+"); // Split textul �n cuvinte
-
-			Pattern pattern = Pattern.compile(combination);
-			Matcher matcher;
-
-			for (String word : words) {
-				matcher = pattern.matcher(word);
-				if (matcher.find()) {
-					rezerva.add(word);
-
-				}
-			}
-			s = bfr.readLine();
-		}
-		rezerva.add(null);
-		return rezerva;
-	}
 
 	/**
 	 * 
@@ -250,8 +230,5 @@ public class OperatiiNotepad {
 	}
 
 };
-<<<<<<< HEAD
-=======
 //verificare?
 
->>>>>>> refs/heads/main
