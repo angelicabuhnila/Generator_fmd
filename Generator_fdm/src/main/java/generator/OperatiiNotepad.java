@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class OperatiiNotepad {
 	/**
@@ -22,7 +20,6 @@ public class OperatiiNotepad {
 	public Vector<String> selectare_studenti_grupa(String locatie, String start, String stop) {
 
 		Vector<String> nume_grupe = new Vector<String>();
-
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
 			String line;
@@ -87,56 +84,6 @@ public class OperatiiNotepad {
 
 	OperatiiNotepad() {
 	};
-
-	/**
-	 * Selectare nume grupe
-	 * 
-	 * @param locatie  fisierului
-	 * @param selectie combinatia pe care vreau sa o selectez
-	 * @return toate elementele ce contin combinatia din selectie
-	 * @throws Exception
-	 */
-	public Vector<String> selectNumeGrupe(String locatie, String selectie) throws Exception {
-		// citire date pe linie
-
-		Vector<String> rezerva = new Vector<String>();
-		int c;
-
-		StringBuilder strb = new StringBuilder();
-		try {
-			InputStream in = new FileInputStream(locatie);
-			while ((c = in.read()) != -1) {
-				strb.append((char) c);
-			}
-			in.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
-
-		String s = bfr.readLine();
-
-		while (s != null) {
-			String combination = selectie; // Combinatia de litere cautata
-
-			String[] words = s.split("\\s+"); // Split textul �n cuvinte
-
-			Pattern pattern = Pattern.compile(combination);
-			Matcher matcher;
-
-			for (String word : words) {
-				matcher = pattern.matcher(word);
-				if (matcher.find()) {
-					rezerva.add(word);
-
-				}
-			}
-			s = bfr.readLine();
-		}
-		rezerva.add(null);
-		return rezerva;
-	}
 
 	/**
 	 * 
