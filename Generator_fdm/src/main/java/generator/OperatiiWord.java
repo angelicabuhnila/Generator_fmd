@@ -2,99 +2,82 @@ package generator;
 
 import java.util.Vector;
 
-import com.spire.doc.Document;
 /**
  * 
  * @author Denisa
  *
  */
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
+import com.spire.doc.Document;
+import com.spire.doc.Section;
+import com.spire.doc.Table;
+import com.spire.doc.TableRow;
+import com.spire.doc.documents.HorizontalAlignment;
+import com.spire.doc.documents.Paragraph;
+import com.spire.doc.documents.TableRowHeightType;
+import com.spire.doc.documents.VerticalAlignment;
 import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
-
-import com.spire.doc.*;
-import com.spire.doc.documents.*;
-import com.spire.doc.fields.TextRange;
-
-import java.util.Vector;
 
 public class OperatiiWord {
 
+	void generareDocument(String locatie_document, String locatie_grupe, String[] cuvinte_cheie,
+			Vector<String> grupe_selectate) throws Exception {
+		OperatiiNotepad objNtp = new OperatiiNotepad();
+		Vector<String> selectNumeGrupe = objNtp.selectNumeGrupe(locatie_grupe, "13");
+		for (int i = 0; i < grupe_selectate.size(); ++i) {
+			Document document = new Document();
+			document.loadFromFile(locatie_document);
+			String start = grupe_selectate.get(i);
+			int index = selectNumeGrupe.indexOf(start);
+			String stop = selectNumeGrupe.get(index + 1);
 
-			  
- void operatii(String locatie_doc,String[] cuvinte_cheie ) {
+			Vector<String> selectare_studenti_grupa = objNtp.selectare_studenti_grupa(locatie_grupe, start, stop);
+			cuvinte_cheie[4] = "" + selectare_studenti_grupa.size();
+			cuvinte_cheie[7]=start;
+			creeareDocument(document, cuvinte_cheie);
+
+			insertTabel(document, selectare_studenti_grupa);
+			/**
+			 * Salvare document
+			 */
+
+			document.saveToFile("FisaGenerata" + cuvinte_cheie[7] + "_" + cuvinte_cheie[5] + ".docx");
+
+		}
+
+	}
+
+	{
+
+	}
+
+	void creeareDocument(Document document, String[] cuvinte_cheie) {
 		/**
 		 * Creare Document
 		 */
-		Document document = new Document();
-       
-		 /**
-		  * Load a Word document
-		  */
-		 
-		 document.loadFromFile(locatie_doc);
-		 cuvinte_cheie = new String[10];
-		
- /**
-  * Inlocuire cuvinte gasite pe text cu datele din interfata
-  */
-		
-		 document.replace("#nume",cuvinte_cheie[0], false, true);
-		 document.replace("#functia",cuvinte_cheie[1], false, true);
-		 document.replace("#asistat",cuvinte_cheie[2], false, true);
-		 document.replace("#data",cuvinte_cheie[3], false, true);
-		 document.replace("#nr",cuvinte_cheie[4], false, true);
-		 document.replace("#materie",cuvinte_cheie[5], false, true);
-		 document.replace("#sala",cuvinte_cheie[6], false, true);
-		 document.replace("#grupa",cuvinte_cheie[7], false, true);
-		  //Save the result document
-	/**
-	 * Salvare document	 
-	 */
-	 document.saveToFile("FisaGenerata" +cuvinte_cheie[7]+"_"+cuvinte_cheie[5]+".docx");
+		// Document document = new Document();
+
+		/**
+		 * Load a Word document
+		 */
+
+		// document.loadFromFile(locatie_doc);
+
+		/**
+		 * Inlocuire cuvinte gasite pe text cu datele din interfata
+		 */
+
+		document.replace("#nume", cuvinte_cheie[0], false, true);
+		document.replace("#functia", cuvinte_cheie[1], false, true);
+		document.replace("#asistat", cuvinte_cheie[2], false, true);
+		document.replace("#data", cuvinte_cheie[3], false, true);
+		document.replace("#nr", cuvinte_cheie[4], false, true);
+		document.replace("#materie", cuvinte_cheie[5], false, true);
+		document.replace("#sala", cuvinte_cheie[6], false, true);
+		document.replace("#grupa", cuvinte_cheie[7], false, true);
+		// Save the result document
+
 	};
-	
-	
-	
+
 	public OperatiiWord() {
 	};
 
@@ -105,9 +88,10 @@ public class OperatiiWord {
 		// Define the data for table
 		String[] header = { "Nr.", "Nume", "Semnatura" };
 
-		String[][] data = new String[numeStudenti.size()][];
+		String[][] data = new String[numeStudenti.size()][3];
 		for (int i = 0; i < data.length; ++i) {
-			data[i] = new String[] { "" + ++i, numeStudenti.get(i), " " };
+			String index=" "+1+i;
+			data[i] = new String[] {numeStudenti.get(i), "__" };
 		}
 
 		// Add a table

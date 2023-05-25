@@ -15,36 +15,38 @@ public class OperatiiNotepad {
 	/**
 	 * 
 	 * @param locatie - locatia fisierului cu grupe
-	 * @param start - de unde incepe citirea pentru inserarea in tabel
-	 * @param stop - unde se termina citirea pentru inserarea in tabel
-	 * Group selection function
+	 * @param start   - de unde incepe citirea pentru inserarea in tabel
+	 * @param stop    - unde se termina citirea pentru inserarea in tabel Group
+	 *                selection function
 	 */
-	public void selectare_grupe(String locatie,String start,String stop) {
-          
-	 Vector<String> nume_grupe = null;
+	public Vector<String> selectare_studenti_grupa(String locatie, String start, String stop) {
 
+		Vector<String> nume_grupe = new Vector<String>();
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
-		    String line;
-		    boolean shouldRead = false; //
-		    
-		    while ((line = reader.readLine()) != null) {
-		        if (line.contains(start)) {
-		            shouldRead = true; //
-		        }
-		        
-		        if (shouldRead) {
-		            System.out.println(line); //
-		        }
-		        
-		        if (line.contains(stop)) {
-		            break; // 
-		        }
-		    }
+			String line;
+			boolean shouldRead = false; //
+
+			while ((line = reader.readLine()) != null) {
+				if (line.contains(start)) {
+					shouldRead = true; //
+				}
+
+				if (shouldRead) {
+
+					nume_grupe.add(line);
+				}
+
+				if (line.contains(stop)) {
+					break; //
+				}
+			}
 		} catch (IOException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
-		}
+
+		return nume_grupe;
+	}
 
 	OperatiiNotepad() {
 	};
@@ -69,29 +71,29 @@ public class OperatiiNotepad {
 		BufferedReader bfr = new BufferedReader(new StringReader(strb.toString()));
 
 		String s = bfr.readLine();
-		
-		
+
 		while (s != null) {
-			   String combination = "130"; // Combinatia de litere cautata
+			String combination = selectie; // Combinatia de litere cautata
 
-	        String[] words = s.split("\\s+"); // Split textul �n cuvinte
+			String[] words = s.split("\\s+"); // Split textul �n cuvinte
 
-	        Pattern pattern = Pattern.compile(combination);
-	        Matcher matcher;
+			Pattern pattern = Pattern.compile(combination);
+			Matcher matcher;
 
-	        for (String word : words) {
-	            matcher = pattern.matcher(word);
-	            if (matcher.find()) {
-	                System.out.println("Cuvantul gasit: " + word);
-	                rezerva.add(word);
-	                
-	            }
-	        }
-	    }
+			for (String word : words) {
+				matcher = pattern.matcher(word);
+				if (matcher.find()) {
+					System.out.println("Cuvantul gasit: " + word);
+					rezerva.add(word);
 
-		
+				}
+			}
+			s=bfr.readLine();
+		}
+		rezerva.add(null);
 		return rezerva;
 	}
+
 	/**
 	 * 
 	 * @param locatie locatia fisierului txt
@@ -194,7 +196,7 @@ public class OperatiiNotepad {
 
 		return rezerva;
 	}
-	
+
 	public String[] readLine2(String locatie, String selectie) throws Exception {
 		// citire date pe linie
 
@@ -202,8 +204,8 @@ public class OperatiiNotepad {
 		int c;
 
 		StringBuilder strb = new StringBuilder();
-		int index_start_selctie=1;
-		int index_insertie=0;
+		int index_start_selctie = 1;
+		int index_insertie = 0;
 		try {
 			InputStream in = new FileInputStream(locatie);
 			while ((c = in.read()) != -1) {
@@ -219,19 +221,15 @@ public class OperatiiNotepad {
 		String s = bfr.readLine();
 
 		while (s != null) {
-			if(s!=selectie)
-			{
+			if (s != selectie) {
 				s = bfr.readLine();
 				++index_start_selctie;
-				
+
 			}
 
 		}
-		
-		
 
 		return rezerva;
 	}
 
 };
-

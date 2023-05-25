@@ -98,6 +98,7 @@ public class Interfata2 extends JFrame {
 
 					array[7] = "Finish";
 					Collections.sort(pag2.grupe_selectate);
+					System.out.println(pag2.grupe_selectate.size());
 					break;
 				case "Grupa Selectata":
 					setGrupa(e, pag2.grupe_selectate);
@@ -107,6 +108,7 @@ public class Interfata2 extends JFrame {
 			}
 
 		}
+		this.grupe_selectate=pag2.grupe_selectate;
 
 		ActionBtn2 a = new ActionBtn2();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

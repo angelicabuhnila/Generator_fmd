@@ -24,18 +24,18 @@ public class Main {
 		String parametru_stop=null;
 		String[] cuvinte_cheie= new String[8];
 		
-		String loc_document;
-		String loc_profesori;
-		String loc_sali;
-		String loc_grupe;
+		String loc_document="D:\\proiect\\Generator_fmd\\Generator_fdm\\fisa.docx";
+		String loc_profesori="D:\\proiect\\Generator_fmd\\Generator_fdm\\src\\main\\java\\generator\\Profesori";
+		String loc_sali="D:\\proiect\\Generator_fmd\\Generator_fdm\\src\\main\\java\\generator\\sali.txt";
+		String loc_grupe="D:\\proiect\\Generator_fmd\\Generator_fdm\\src\\main\\java\\generator\\Grupe";
 		while (parametru_stop!="Finish") {
 
 			s = pag.setInterface(s, pag1, pag2);
 			if (s == "Interfata2") {
-				 loc_document = pag1.array[0];
-				 loc_profesori = pag1.array[1];
-				 loc_sali=pag1.array[2];
-				 loc_grupe=pag1.array[3];
+				// loc_document = pag1.array[0];
+				// loc_profesori = pag1.array[1];
+				 //loc_sali=pag1.array[2];
+				 //loc_grupe=pag1.array[3];
 				profesori = notePed.readLine(loc_profesori);
 				nume_profesori=prof.numeProfesori(profesori);
 				nume_profesori.add(0, null);
@@ -46,6 +46,7 @@ public class Main {
 				
 				pag2 = new Interfata2(nume_profesori,nume_sali,nume_materii);
 
+				
 				pag1.array[4] = null;
  
 				s = "stop";
@@ -56,16 +57,24 @@ public class Main {
 			{
 				pag2.setVisible(false);
 				cuvinte_cheie[0]=pag2.array[1];
-				
-				
+				cuvinte_cheie[1]="functia_curs_realizare";
+				//get functie dupa nume profesor 
+				cuvinte_cheie[2]=pag2.array[2];
+				cuvinte_cheie[3]="dataa";
+				//cuvinte_cheie[4]=array[] 
+					//dimensiunea vectorului de studenti
+				cuvinte_cheie[5]=pag2.array[3];
+				cuvinte_cheie[6]=pag2.array[4];
 				
 			}
 
 		}
-		for(int i=0; i<pag2.array.length;++i)
-		{
-			System.out.println(pag2.array[i]);
-		}
+		
+		System.out.println(pag2.grupe_selectate.size());
+		OperatiiWord word= new OperatiiWord();
+		word.generareDocument(loc_document, loc_grupe, cuvinte_cheie, pag2.grupe_selectate);
+		
+		
 
 	}
 
