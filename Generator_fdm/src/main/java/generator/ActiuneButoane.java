@@ -7,6 +7,7 @@ package generator;
 public class ActiuneButoane {
 
 	public ActiuneButoane() {
+		
 
 	}
 

@@ -6,15 +6,14 @@ import javax.print.DocFlavor.STRING;
 
 /**
  * 
- * @author Angelica
- *  Clasa pentru stocarea datelor despre profesor
+ * @author Angelica Clasa pentru stocarea datelor despre profesor
  *
  */
 public class DateProfesor {
-/**
- * Clasa contine numele profesorului, materiile si functia.
- */
-	private String nume; 
+	/**
+	 * Clasa contine numele profesorului, materiile si functia.
+	 */
+	private String nume;
 	private Vector<String> materie;
 	private String functie;
 
@@ -62,7 +61,7 @@ public class DateProfesor {
 		this.setFunctie(functie);
 
 	}
- 
+
 	/**
 	 * 
 	 * @return nume profesor
@@ -137,44 +136,56 @@ public class DateProfesor {
 
 		}
 	}
-	
+
 	/**
 	 * Selectez numele profesorilor pentru Interfata2
+	 * 
 	 * @param profesori
 	 * @return
 	 */
-	public Vector<String> numeProfesori(Vector<DateProfesor> profesori)
-	{
-		Vector<String> numeProfesori= new Vector<String>();
-		for(int i=0;i< profesori.size();++i)
-		{
+	public Vector<String> numeProfesori(Vector<DateProfesor> profesori) {
+		Vector<String> numeProfesori = new Vector<String>();
+		for (int i = 0; i < profesori.size(); ++i) {
 			numeProfesori.add(profesori.get(i).getNume());
 		}
 		return numeProfesori;
-		
+
 	}
+
 	/**
-	 * Selectez materiile pentru numeProfesor si adaug la final si functia lui
+	 * Selectez materiile
+	 * 
 	 * @param profesori
-	 * @param numeProfesor
 	 * @return
 	 */
-	
-	public Vector<String> numeMateriiFunctie(Vector<DateProfesor> profesori, String numeProfesor)
-	{
-		Vector<String> numeMaterii= new Vector<String>();
-		for(int i=0;i< profesori.size();++i)
-		{
-			if(numeProfesor==profesori.get(i).getNume())
-			{
-				numeMaterii=profesori.get(i).getMaterie();
-				numeMaterii.add(profesori.get(i).getFunctie());
-			}
-			
-			
+
+	public Vector<String> numeMateriiFunctie(Vector<DateProfesor> profesori) {
+		Vector<String> numeMaterii = new Vector<String>();
+		for (int i = 0; i < profesori.size(); ++i) {
+			numeMaterii.addAll(profesori.get(i).getMaterie());
+
 		}
 		return numeMaterii;
-		
+
+	}
+	
+	/**
+	 * 
+	 * @param profesori
+	 * @param profesor
+	 * @return functia profesorului
+	 */
+	public String functieProfesor(Vector<DateProfesor> profesori,String profesor) {
+		 
+		for (int i = 0; i < profesori.size(); ++i) {
+			if(profesori.get(i).getNume()==profesor)
+			{
+				return profesori.get(i).getFunctie();
+			}
+
+		}
+		return null;
+
 	}
 
 

@@ -1,42 +1,32 @@
 package generator;
 
+import java.awt.Button;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import com.spire.ms.System.Collections.ArrayList;
-
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JMenuBar;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.Collections;
 import java.util.Vector;
-import java.awt.Button;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import java.awt.Font;
+
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
 public class Interfata2 extends JFrame {
-
-	private JPanel contentPane;
+private JPanel contentPane;
 	private JTextField textField;
 	String[] array = new String[15];
-	Vector<String> array_prof= new Vector<String>(); 
-	Vector<String>array_sali=new Vector<String>();
-     Vector<String>array_materii=new Vector<String>();
+	Vector<String> grupe_selectate = new Vector<String>();
+
+	Vector<String> array_prof = new Vector<String>();
+	Vector<String> array_sali = new Vector<String>();
+	Vector<String> array_materii = new Vector<String>();
+	
 
 	/**
 	 * Launch the application.
@@ -56,25 +46,37 @@ public class Interfata2 extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 ??
+	 * Create the frame. ??
 	 */
-	public Interfata2()
-	{
-		this.array=initializare();
-	}
-	public Interfata2( Vector<String> array_prof,Vector<String> array_sali,Vector<String> array_materii) {
-		this.array_prof=array_prof;
-		this.array_sali=array_sali;
-		this.array_materii=array_materii;
-		this.array = initializare();
+	public Interfata2() {
 		
+	}
+
+	/**
+	 * folosesc acesti parametrii pentru creearea interfetei
+	 * @param array_prof folosit pentru inserarea in interfata a datelor despre profesori
+	 * @param array_sali folosit pentru inseararea in interfata a salilor 
+	 * @param array_materii folosit pentru inserarea in interfata a materiilor 
+	 *  */
+	public Interfata2(Vector<String> array_prof, Vector<String> array_sali, Vector<String> array_materii) {
+		this.array_prof = array_prof;
+		this.array_sali = array_sali;
+		this.array_materii = array_materii;
+		this.array = initializare();
+
 	};
+	
 
 	private String[] initializare() {
 		final String[] array = new String[15];
+		@SuppressWarnings("unused")
+		final
+		Interfata2 pag2 = new Interfata2();
 		class ActionBtn2 implements ActionListener {
 
+			/**
+			 * clasa actiune butoane
+			 */
 			ActionBtn2() {
 			};
 
@@ -82,12 +84,41 @@ public class Interfata2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				if (e.getActionCommand() == "Back") {
+				switch (e.getActionCommand()) {
+				case "Back":
 					array[0] = "Interfata1";
+					break;
+				case "Profesor1":
+					array[1] = setParametrii(e);
+					break;
+				case "Profesor2":
+					array[2] = setParametrii(e);
+					break;
+				case "Materie":
+					array[3] = setParametrii(e);
+					break;
+				case "Sala":
+					array[4] = setParametrii(e);
+					break;
+				case "Functia":
+					array[5] = setParametrii(e);
+					break;
+				case "Finish":
+
+					array[7] = "Finish";
+					Collections.sort(pag2.grupe_selectate);
+					System.out.println(pag2.grupe_selectate.size());
+					break;
+				case "Grupa Selectata":
+					setGrupa(e, pag2.grupe_selectate);
+					break;
 				}
+
 			}
 
 		}
+		
+		this.grupe_selectate=pag2.grupe_selectate;
 
 		ActionBtn2 a = new ActionBtn2();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,6 +142,7 @@ public class Interfata2 extends JFrame {
 		Button button = new Button("Finish");
 		button.setBounds(528, 434, 66, 21);
 		contentPane.add(button);
+		button.addActionListener(a);
 
 		Button button_1 = new Button("Back");
 		button_1.setBounds(447, 434, 66, 21);
@@ -172,44 +204,93 @@ public class Interfata2 extends JFrame {
 		rdbtnNewRadioButton_9.setBounds(528, 350, 76, 21);
 		contentPane.add(rdbtnNewRadioButton_9);
 
-		JRadioButton rdbtnNewRadioButton_10 = new JRadioButton("SELECT ALL");
-		rdbtnNewRadioButton_10.setBounds(260, 384, 103, 21);
-		contentPane.add(rdbtnNewRadioButton_10);
+		String jradio = "Grupa Selectata";
+		
+		rdbtnNewRadioButton.setActionCommand(jradio);
+		rdbtnNewRadioButton_1.setActionCommand(jradio);
+		rdbtnNewRadioButton_2.setActionCommand(jradio);
+		rdbtnNewRadioButton_3.setActionCommand(jradio);
+		rdbtnNewRadioButton_4.setActionCommand(jradio);
+		rdbtnNewRadioButton_5.setActionCommand(jradio);
+		rdbtnNewRadioButton_6.setActionCommand(jradio);
+		rdbtnNewRadioButton_7.setActionCommand(jradio);
+		rdbtnNewRadioButton_8.setActionCommand(jradio);
+		rdbtnNewRadioButton_9.setActionCommand(jradio);
+		
 
+		rdbtnNewRadioButton.addActionListener(a);
+		rdbtnNewRadioButton_1.addActionListener(a);
+		rdbtnNewRadioButton_2.addActionListener(a);
+		rdbtnNewRadioButton_3.addActionListener(a);
+		rdbtnNewRadioButton_4.addActionListener(a);
+		rdbtnNewRadioButton_5.addActionListener(a);
+		rdbtnNewRadioButton_6.addActionListener(a);
+		rdbtnNewRadioButton_7.addActionListener(a);
+		rdbtnNewRadioButton_8.addActionListener(a);
+		rdbtnNewRadioButton_9.addActionListener(a);
+		
 		JLabel lblNewLabel_4 = new JLabel("Sala");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_4.setBounds(10, 286, 45, 13);
 		contentPane.add(lblNewLabel_4);
-		
-	
-		
 
-   
-		JComboBox comboBox = new JComboBox<String>(this.array_prof);
+		JComboBox<String> comboBox = new JComboBox<String>(this.array_prof);
 		comboBox.setBounds(130, 36, 252, 21);
 		contentPane.add(comboBox);
-		
-	
+		comboBox.setActionCommand("Profesor1");
 
-
-		
-		JComboBox comboBox_1 = new JComboBox<String>(this.array_prof);
+		JComboBox<String> comboBox_1 = new JComboBox<String>(this.array_prof);
 		comboBox_1.setBounds(130, 103, 252, 21);
 		contentPane.add(comboBox_1);
-		
-		
-		
-		JComboBox comboBox_2 = new JComboBox<String>(this.array_materii);
+		comboBox_1.setActionCommand("Profesor2");
+
+		JComboBox<String> comboBox_2 = new JComboBox<String>(this.array_materii);
 		comboBox_2.setBounds(130, 172, 252, 21);
 		contentPane.add(comboBox_2);
-	
-		JComboBox comboBox_3 = new JComboBox<String>(this.array_sali);
+		comboBox_2.setActionCommand("Materie");
+
+		JComboBox<String> comboBox_3 = new JComboBox<String>(this.array_sali);
 		comboBox_3.setBounds(130, 284, 252, 21);
 		contentPane.add(comboBox_3);
+		comboBox_3.setActionCommand("Sala");
+
+		comboBox.addActionListener(a);
+		comboBox_1.addActionListener(a);
+		comboBox_2.addActionListener(a);
+		comboBox_3.addActionListener(a);
+
 		return array;
-		
+
 	}
 
-	
-	
+	@SuppressWarnings("unchecked")
+	/**
+	 * 
+	 * @param e actiunea butonului
+	 * @return returneaza textul selectat
+	 */
+	public String setParametrii(ActionEvent e) {
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox = (JComboBox<String>) e.getSource();
+		return comboBox.getSelectedItem().toString();
+
+	}
+
+	/**
+	 * 
+	 * @param e actiunea butonului 
+	 * @param grupe adauga grupele selectate
+	 */
+	public void setGrupa(ActionEvent e, Vector<String> grupe) {
+		JRadioButton jradio = new JRadioButton();
+		jradio = (JRadioButton) e.getSource();
+		if (jradio.isSelected()) {
+			grupe.add(jradio.getText());
+
+		} else {
+			grupe.remove(jradio.getText());
+		}
+
+	}
+
 }

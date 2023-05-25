@@ -12,6 +12,78 @@ import java.util.Vector;
 public class OperatiiNotepad {
 	/**
 	 * 
+	 * @param locatie - locatia fisierului cu grupe
+	 * @param start   - de unde incepe citirea pentru inserarea in tabel
+	 * @param stop    - unde se termina citirea pentru inserarea in tabel Group
+	 *                selection function
+	 */
+	public Vector<String> selectare_studenti_grupa(String locatie, String start, String stop) {
+
+		Vector<String> nume_grupe = new Vector<String>();
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
+			String line;
+			boolean shouldRead = false; //
+
+			while ((line = reader.readLine()) != null) {
+				if (line.contains(start)) {
+					shouldRead = true; //
+				}
+
+				if (shouldRead) {
+
+					nume_grupe.add(line);
+				}
+
+				if (line.contains(stop)) {
+					break; //
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		nume_grupe.remove(start);
+		nume_grupe.remove(stop);
+		nume_grupe.remove(null);
+
+		return nume_grupe;
+
+	}
+	/**
+	 * 
+	 * @param locatie - loagtia fisiserului cu grupe
+	 * @param start - de unde incepe citirea pentru inserarea in tabel
+	 * @param stop - unde se termina citirea pentru inserarea in tabel
+	 * Group selection function
+	 */
+	public void selectare_grupe(String locatie,String start,String stop) {
+          
+	 Vector<String> nume_grupe = null;
+
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(locatie))) {
+		    String line;
+		    boolean shouldRead = false; //
+		    
+		    while ((line = reader.readLine()) != null) {
+		        if (line.contains(start)) {
+		            shouldRead = true; //
+		        }
+		        
+		        if (shouldRead) {
+		            System.out.println(line); //
+		        }
+		        
+		        if (line.contains(stop)) {
+		            break; // 
+		        }
+		    }
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		}
+	/**
+	 * 
 	 * @param locatie - loagtia fisiserului cu grupe
 	 * @param start - de unde incepe citirea pentru inserarea in tabel
 	 * @param stop - unde se termina citirea pentru inserarea in tabel
@@ -88,7 +160,7 @@ public class OperatiiNotepad {
 	}
 
 	/**
-	 * Selectare dtae si generare obiect
+	 * Selectare date si generare obiect de tip DateProfesor
 	 * 
 	 * @param s     datele de prelucrat
 	 * @param index linia de unde s a fcaut citirea
@@ -119,6 +191,13 @@ public class OperatiiNotepad {
 
 	};
 
+	/**
+	 * citirea din fisier pe linie
+	 * 
+	 * @param locatie locatia fisierului
+	 * @return fiecare linie din fisier este pusa intr un vector
+	 * @throws Exception
+	 */
 	public Vector<String> readLine1(String locatie) throws Exception {
 		// citire date pe linie
 
