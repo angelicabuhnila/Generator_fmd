@@ -6,16 +6,36 @@ import com.spire.doc.fields.TextRange;
 
 import java.util.Vector;
 
+/**
+ * Clasa OperatiiWord ofera metode pentru inserarea unui tabel intr-un document
+ * Word folosind biblioteca Spire.Doc.
+ * 
+ * @author Ana-Maria Pricop
+ *
+ */
 public class OperatiiWord {
+
+	/**
+	 * Constructorul clasei OperatiiWord.
+	 */
 
 	public OperatiiWord() {
 	};
+
+	/**
+	 * Insereaza un tabel in documentul specificat, cu datele furnizate.
+	 * 
+	 * @param document     Documentul Word in care se va insera tabelul.
+	 * @param numeStudenti Vectorul de nume de studenti pentru a fi afisat în tabel.
+	 */
 
 	public void insertTabel(Document document, Vector<String> numeStudenti) {
 
 		Section section = document.addSection();
 
-		// Define the data for table
+		/**
+		 * Define the data for table
+		 */
 		String[] header = { "Nr.", "Nume", "Semnatura" };
 
 		String[][] data = new String[numeStudenti.size()][];
@@ -23,11 +43,15 @@ public class OperatiiWord {
 			data[i] = new String[] { "" + ++i, numeStudenti.get(i), " " };
 		}
 
-		// Add a table
+		/**
+		 * Add a table
+		 */
 		Table table = section.addTable(true);
 		table.resetCells(data.length + 1, header.length);
 
-		// Set the first row as table header
+		/**
+		 * Set the first row as table header
+		 */
 		TableRow row = table.getRows().get(0);
 		row.isHeader(true);
 		row.setHeight(20);
@@ -40,7 +64,9 @@ public class OperatiiWord {
 			txtRange.getCharacterFormat().setBold(true);
 		}
 
-		// Add data to the rest of rows
+		/**
+		 * Add data to the rest of rows
+		 */
 		for (int r = 0; r < data.length; r++) {
 			TableRow dataRow = table.getRows().get(r + 1);
 			dataRow.setHeight(25);
