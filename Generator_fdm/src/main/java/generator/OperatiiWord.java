@@ -16,7 +16,7 @@ import com.spire.doc.documents.Paragraph;
 import com.spire.doc.documents.TableRowHeightType;
 import com.spire.doc.documents.VerticalAlignment;
 import com.spire.doc.fields.TextRange;
-
+//
 
 public class OperatiiWord {
 
